@@ -7,4 +7,4 @@
 *  make
 *  ./demo_graphique /audio/Track1.mp3
 *  Vous pouvez modifier la musique jouée en choisissant la Track1, la Track2 ou la Track 3
-
+*  (Il sera parfois nécessaire de make clean avant tout)
