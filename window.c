@@ -18,6 +18,7 @@ static int _wW = 1200, _wH = 1000;
 static GLuint _pId = 0;
 /*!\brief quelques objets géométriques */
 static GLuint _lune = 0, 
+_ciel = 0,
 _mercure = 0, 
 _venus = 0, 
 _sphere = 0, 
@@ -67,6 +68,7 @@ static void init(void) {
   gl4duGenMatrix(GL_FLOAT, "projectionMatrix");
   resize(_wW, _wH);
   //Génération des planetes
+  _ciel =gl4dgGenQuadf();
   _sphere = gl4dgGenSpheref(30, 30);
   _lune = gl4dgGenSpheref(30,30);
   _cube = gl4dgGenCubef();
@@ -101,6 +103,9 @@ static void init(void) {
   loadTexture(_tex[12], "images/uranus.jpg");
   //Neptune
   loadTexture(_tex[13], "images/neptune.jpg");
+  //Ciel
+  loadTexture(_tex[14], "images/ciel.jpg");
+
 
 }
 /*!\brief pointeur vers la musique chargée par SDL_Mixer */
@@ -150,6 +155,16 @@ static void draw(void) {
   } gl4duPopMatrix();
   glBindTexture(GL_TEXTURE_2D, _tex[2]);
   gl4dgDraw(_quad);
+//Ciel
+    gl4duTranslatef(0, 0, -10.0);
+  gl4duPushMatrix(); {
+    gl4duTranslatef(0, 0.0, -100.0);
+    gl4duRotatef(0.01*a, 0, 0, 1);
+    gl4duScalef(90.0f,90, 90);
+    gl4duSendMatrices();
+  } gl4duPopMatrix();
+  glBindTexture(GL_TEXTURE_2D, _tex[14]);
+  gl4dgDraw(_ciel);
   // Soleil
   gl4duTranslatef(0, -1, 0);
   gl4duSendMatrices();
