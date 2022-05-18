@@ -8,8 +8,8 @@
 #include <GL4D/gl4df.h>
 #include <GL4D/gl4duw_SDL2.h>
 #include <SDL_image.h>
+#include <SDL.h>
 #include <SDL_mixer.h>
-
 
 /* Prototypes des fonctions statiques contenues dans ce fichier C */
 static void init(void);
@@ -30,11 +30,13 @@ int main(int argc, char ** argv) {
   if(!gl4duwCreateWindow(argc, argv, "GL4Dummies", 0, 0, 
 			 _wW, _wH, GL4DW_RESIZABLE | GL4DW_SHOWN))
     return 1;
+
   init();
   atexit(quit);
   gl4duwResizeFunc(resize);
   gl4duwDisplayFunc(draw);
   gl4duwMainLoop();
+
   
   return 0;
 }
