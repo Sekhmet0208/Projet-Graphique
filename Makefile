@@ -1,4 +1,3 @@
-
 SHELL = /bin/sh
 # définition des commandes utilisées
 CC = gcc
@@ -11,18 +10,17 @@ CP = rsync -R
 # déclaration des options du compilateur
 CFLAGS = -Wall -O3
 CPPFLAGS = -I.
-LDFLAGS = -lm -lSDL2_image 
+LDFLAGS = -lm -lSDL2_mixer -lSDL2_image
 
 # définition des fichiers et dossiers
-PROGNAME = systeme_solaire_demo
+PROGNAME = demo_graphique
 VERSION = 1.0
 distdir = $(PROGNAME)-$(VERSION)
 HEADERS = 
-SOURCES = window.c 
-
+SOURCES = window.c
 OBJ = $(SOURCES:.c=.o)
 DOXYFILE = documentation/Doxyfile
-EXTRAFILES = COPYING $(wildcard shaders/*.?s)  $(wildcard images/*) 
+EXTRAFILES = COPYING $(wildcard audio/*) 
 DISTFILES = $(SOURCES) Makefile $(HEADERS) $(DOXYFILE) $(EXTRAFILES)
 
 # Traitement automatique (ne pas modifier)
